@@ -101,7 +101,7 @@ function submitFormSuccess(data) {
 
 function editFicheSuccess(id) {
     return {
-        type: type.EDIT_FICHE_SUCCESS,
+        type: types.EDIT_FICHE_SUCCESS,
         id: id
     };
 }
@@ -163,6 +163,7 @@ function destroyFiche(id) {
 }
 
 function editFiche(id) {
+    console.log(id);
     return function (dispatch) {
         return makeFicheRequest('put', id).then(function (res) {
             if (res.status === 200) {

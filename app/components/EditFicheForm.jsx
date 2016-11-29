@@ -28,7 +28,7 @@ class EditFicheForm extends Component {
         this.props.initialize(initData);
     }
     handleFormSubmit(formProps){
-        this.props.editFiche(formProps);
+        this.props.submitForm(formProps);
     }
     render() {
         const { handleSubmit } = this.props;

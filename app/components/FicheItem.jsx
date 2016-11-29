@@ -38,7 +38,7 @@ export default class FicheItem extends Component {
                         name={name}
                         id={id}
                         descr={text}
-                        onUpdate={onEdit}
+                        update={onEdit}
                         />
 
                 </div>
@@ -60,7 +60,7 @@ FicheItem.propTypes={
 
 class ModalFiche extends Component {
     render() {
-        const {show, onHide, descr, name,id, onUpdate } = this.props ;
+        const {show, onHide, descr, name,id, update } = this.props ;
         return (
             <Modal {...this.props} bsSize="small" aria-labelledby="contained-modal-title-sm">
                 <Modal.Header closeButton>
@@ -68,7 +68,10 @@ class ModalFiche extends Component {
                 </Modal.Header>
                 <Modal.Body>
                     <div>
-                        <EditFicheForm descr={descr} name={name}/>
+                        <EditFicheForm
+                            descr={descr}
+                            name={name}
+                        />
                     </div>
                 </Modal.Body>
             </Modal>
@@ -79,5 +82,5 @@ ModalFiche.propTypes = {
     name: PropTypes.string,
     descr:PropTypes.string,
     id : PropTypes.string,
-    onUpdate: PropTypes.func.isRequired
+    update: PropTypes.func.isRequired
 };
