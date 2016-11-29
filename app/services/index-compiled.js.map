@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":[],"mappings":";;;;;;;;;;;2CAAS,O;;;;;;;;;2CACA,O","file":"index-compiled.js","sourcesContent":["export { default as voteService } from './topics';\nexport { default as ficheService } from './fiches';\n\n"]}

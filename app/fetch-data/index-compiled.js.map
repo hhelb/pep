@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":[],"mappings":";;;;;;;;;;;kDAAS,O;;;;;;;;;mDACA,O","file":"index-compiled.js","sourcesContent":["export { default as fetchVoteData } from './fetchVoteData';\nexport { default as fetchFicheData } from './fetchFicheData';\n\n"]}
