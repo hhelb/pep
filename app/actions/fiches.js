@@ -61,10 +61,10 @@ export function submitFormSuccess(data){
     }
 }
 
-export function editFicheSuccess(data){
+export function editFicheSuccess(id){
     return {
         type: type.EDIT_FICHE_SUCCESS,
-        payload: data
+        id
     }
 }
 export function editFicheFailure(data) {

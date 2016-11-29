@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import ReactDOM from 'react-dom';
-import FicheForm from '../components/FicheForm.jsx';
+import FicheForm from './NewFicheForm.jsx';
 
 export default class AddFicheModal extends Component {
     constructor(props) {

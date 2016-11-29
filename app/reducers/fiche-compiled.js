@@ -28,6 +28,11 @@ var fiche = function fiche() {
                 text: action.text,
                 name: action.name
             };
+        case type.EDIT_FICHE_SUCCESS:
+            if (state.id === action.id) {
+                return {};
+            }
+
         default:
             return state;
     }
@@ -44,13 +49,16 @@ var fiches = function fiches() {
         case types.CREATE_FICHE_REQUEST:
             return [].concat(_toConsumableArray(state), [fiche(undefined, action)]);
         case types.CREATE_FICHE_FAILURE:
-        case types.EDIT_FICHE_FAILURE:
-            return state.filter(function (t) {
-                return t.id !== action.id;
+            return state.filter(function (f) {
+                return f.id !== action.id;
+            });
+        case types.EDIT_FICHE_SUCESS:
+            return state.map(function (f) {
+                return fiche(f, action);
             });
         case types.DESTROY_FICHE:
-            return state.filter(function (t) {
-                return t.id !== action.id;
+            return state.filter(function (f) {
+                return f.id !== action.id;
             });
         default:
             return state;

@@ -15,6 +15,13 @@ const fiche = (
                 text: action.text,
                 name: action.name
             };
+        case types.EDIT_FICHE_SUCCESS:
+                if(state.id === action.id){
+                    return{ ...state,
+                        text: action.text,
+                        name:action.name}
+        }
+        return state;
         default:
             return state;
     }
@@ -31,10 +38,11 @@ const fiches = (
         case types.CREATE_FICHE_REQUEST:
             return [...state, fiche(undefined, action)];
         case types.CREATE_FICHE_FAILURE:
-        case types.EDIT_FICHE_FAILURE:
-            return state.filter(t => t.id !== action.id);
+            return state.filter(f => f.id !== action.id);
+        case types.EDIT_FICHE_SUCCESS:
+            return state.map(f => fiche(f, action));
         case types.DESTROY_FICHE:
-            return state.filter(t => t.id !== action.id);
+            return state.filter(f => f.id !== action.id);
         default:
             return state;
     }

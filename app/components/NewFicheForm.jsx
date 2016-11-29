@@ -5,7 +5,7 @@ import * as actions from '../actions/fiches';
 
 
 const form = reduxForm({
-    form: 'FicheForm'
+    form: 'EditFicheForm'
 });
 const renderField = field =>
     (

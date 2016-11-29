@@ -4,7 +4,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import FicheForm from '../components/FicheForm.jsx';
+import EditFicheForm from './EditFicheForm.jsx';
 import ReactDOM from 'react-dom';
 
 export default class FicheItem extends Component {
@@ -68,12 +68,9 @@ class ModalFiche extends Component {
                 </Modal.Header>
                 <Modal.Body>
                     <div>
-                        <FicheForm/>
+                        <EditFicheForm descr={descr} name={name}/>
                     </div>
                 </Modal.Body>
-                <Modal.Footer>
-                    { /* <Button bsStyle="success" onClick={Save}>Enregistrer</Button>*/}
-                </Modal.Footer>
             </Modal>
         );
     }

@@ -99,10 +99,10 @@ function submitFormSuccess(data) {
     };
 }
 
-function editFicheSuccess(data) {
+function editFicheSuccess(id) {
     return {
         type: type.EDIT_FICHE_SUCCESS,
-        payload: data
+        id: id
     };
 }
 function editFicheFailure(data) {
