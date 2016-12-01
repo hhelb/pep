@@ -65,9 +65,6 @@ class ModalFiche extends Component {
                         <FicheForm/>
                     </div>
                 </Modal.Body>
-                <Modal.Footer>
-                    { /* <Button bsStyle="success" onClick={Save}>Enregistrer</Button>*/}
-                </Modal.Footer>
             </Modal>
         );
     }

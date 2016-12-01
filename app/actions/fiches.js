@@ -34,6 +34,15 @@ export function createFicheRequest(data) {
         name: data.name
     };
 }
+
+export function editFicheRequest(data){
+    return {
+        type: types.EDIT_FICHE_REQUEST,
+        id:data.id,
+        text: data.text,
+        name : data.name
+        }
+}
 export function destroy(id){
     return {
         type: types.DESTROY_FICHE,
@@ -117,10 +126,10 @@ export function destroyFiche(id){
     }
 }
 
-export function editFiche(id){
-    console.log(id);
+export function editFiche({id, name, text}){
     return (dispatch) => {
-        return makeFicheRequest('put', id)
+        dispatch(editFicheRequest({id, name, text}));
+        return makeFicheRequest('put', id, {id, name, text})
             .then((res) => {if(res.status === 200) {
                 return dispatch(editFicheSuccess(res.data));}})
             .catch(() => (editFicheFailure({id,

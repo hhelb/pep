@@ -5,7 +5,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import EditFicheForm from './EditFicheForm.jsx';
-import ReactDOM from 'react-dom';
 
 export default class FicheItem extends Component {
     constructor(props) {
@@ -45,7 +44,6 @@ export default class FicheItem extends Component {
 
             </div>
         )
-
     }
 };
 
@@ -60,7 +58,7 @@ FicheItem.propTypes={
 
 class ModalFiche extends Component {
     render() {
-        const {show, onHide, descr, name,id, update } = this.props ;
+        const { descr, name, id } = this.props ;
         return (
             <Modal {...this.props} bsSize="small" aria-labelledby="contained-modal-title-sm">
                 <Modal.Header closeButton>
@@ -71,6 +69,7 @@ class ModalFiche extends Component {
                         <EditFicheForm
                             descr={descr}
                             name={name}
+                            id={id}
                         />
                     </div>
                 </Modal.Body>

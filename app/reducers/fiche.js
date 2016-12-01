@@ -15,7 +15,7 @@ const fiche = (
                 text: action.text,
                 name: action.name
             };
-        case types.EDIT_FICHE_SUCCESS:
+        case types.EDIT_FICHE_REQUEST:
                 if(state.id === action.id){
                     return{ ...state,
                         text: action.text,
@@ -39,7 +39,7 @@ const fiches = (
             return [...state, fiche(undefined, action)];
         case types.CREATE_FICHE_FAILURE:
             return state.filter(f => f.id !== action.id);
-        case types.EDIT_FICHE_SUCCESS:
+        case types.EDIT_FICHE_REQUEST:
             return state.map(f => fiche(f, action));
         case types.DESTROY_FICHE:
             return state.filter(f => f.id !== action.id);

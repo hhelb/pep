@@ -23,12 +23,13 @@ class EditFicheForm extends Component {
     handleInitialize() {
         const initData = {
             "name": this.props.name,
-            "text": this.props.descr
+            "text": this.props.descr,
+            "id": this.props.id
         };
         this.props.initialize(initData);
     }
     handleFormSubmit(formProps){
-        this.props.submitForm(formProps);
+        this.props.editFiche(formProps);
     }
     render() {
         const { handleSubmit } = this.props;
@@ -54,6 +55,4 @@ function mapStateToProps(state){
         fiche: state.form
     };
 }
-
-
 export default connect(mapStateToProps, actions) (form(EditFicheForm));

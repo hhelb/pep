@@ -14,6 +14,7 @@ exports.makeFicheRequest = makeFicheRequest;
 exports.fetchFiches = fetchFiches;
 exports.ficheTyping = ficheTyping;
 exports.createFicheRequest = createFicheRequest;
+exports.editFicheRequest = editFicheRequest;
 exports.destroy = destroy;
 exports.createFicheSuccess = createFicheSuccess;
 exports.createFicheFailure = createFicheFailure;
@@ -67,6 +68,15 @@ function ficheTyping() {
 function createFicheRequest(data) {
     return {
         type: types.CREATE_FICHE_REQUEST,
+        id: data.id,
+        text: data.text,
+        name: data.name
+    };
+}
+
+function editFicheRequest(data) {
+    return {
+        type: types.EDIT_FICHE_REQUEST,
         id: data.id,
         text: data.text,
         name: data.name
@@ -162,10 +172,14 @@ function destroyFiche(id) {
     };
 }
 
-function editFiche(id) {
-    console.log(id);
+function editFiche(_ref2) {
+    var id = _ref2.id,
+        name = _ref2.name,
+        text = _ref2.text;
+
     return function (dispatch) {
-        return makeFicheRequest('put', id).then(function (res) {
+        dispatch(editFicheRequest({ id: id, name: name, text: text }));
+        return makeFicheRequest('put', id, { id: id, name: name, text: text }).then(function (res) {
             if (res.status === 200) {
                 return dispatch(editFicheSuccess(res.data));
             }
