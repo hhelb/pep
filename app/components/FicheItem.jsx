@@ -20,16 +20,15 @@ export default class FicheItem extends Component {
     };
     render() {
         let close = () => this.setState({show : false});
-        const {name, id, log, text, onEdit} = this.props;
+        const {name, id, text, onEdit} = this.props;
+
         return (
             <div>
-                <div className="col-md-4">
-                    <h3> Nom : {name}</h3>
                     <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/"/>
                     <p> Id : {id} </p>
+                    <p> nom : {name} </p>
                     <p> Texte: {text}</p>
-                    <p> log : {log} </p>
-                    <button className="glyphicon glyphicon-remove btn btn-danger" onClick={this.onDestroy}/>
+                    <Button bsStyle="danger" className="glyphicon glyphicon-remove" onClick={this.onDestroy}/>
                     <Button bsStyle="warning" className="glyphicon glyphicon-edit" onClick={() => this.setState({show:true})}/>
                     <ModalFiche
                         show={this.state.show}
@@ -39,9 +38,6 @@ export default class FicheItem extends Component {
                         descr={text}
                         update={onEdit}
                         />
-
-                </div>
-
             </div>
         )
     }
@@ -52,7 +48,8 @@ FicheItem.propTypes={
     id : PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     onDestroy :PropTypes.func.isRequired,
-    onEdit: PropTypes.func.isRequired
+    onEdit: PropTypes.func.isRequired,
+    fiche: PropTypes.object
 };
 
 

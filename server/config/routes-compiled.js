@@ -66,6 +66,7 @@ exports.default = function (app) {
 
   if (fichesController) {
     app.get('/fiches', fichesController.all);
+    app.get('/fiches/fiche/:id', fichesController.one);
     app.post('/fiches/:id', fichesController.add);
     app.delete('/fiches/:id', fichesController.remove);
     app.put('/fiches/:id', fichesController.update);

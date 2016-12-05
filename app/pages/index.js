@@ -5,4 +5,6 @@ export { default as LoginOrRegister } from 'pages/LoginOrRegister';
 export { default as About } from 'pages/About';
 export { default as Fiche } from 'pages/Fiche';
 export { default as Playlist } from 'pages/Playlist';
+export { default as DetailedFiche} from 'pages/DetailedFiche';
+
 

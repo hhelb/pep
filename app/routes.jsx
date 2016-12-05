@@ -1,8 +1,7 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
-import { fetchVoteData, fetchFicheData } from 'fetch-data';
-import { App, Vote, Dashboard, About, LoginOrRegister, Fiche, Playlist } from 'pages';
-
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { fetchVoteData, fetchFicheData} from 'fetch-data';
+import { App, Vote, Dashboard, About, LoginOrRegister, Fiche, DetailedFiche, Playlist } from 'pages';
 /*
  * @param {Redux Store}
  * We require store as an argument here because we wish to get
@@ -30,13 +29,16 @@ export default (store) => {
     callback();
   };
   return (
-    <Route path="/" component={App}>
-      <IndexRoute component={Vote} fetchData={fetchVoteData} />
-      <Route path="login" component={LoginOrRegister} onEnter={redirectAuth} />
-      <Route path="dashboard" component={Dashboard} onEnter={requireAuth} />
-      <Route path="about" component={About} />
-      <Route path="fiches" component={Fiche} fetchData={fetchFicheData} />
-      <Route path="playlists" component={Playlist} />
-    </Route>
+          <Route path="/" component={App}>
+            <IndexRoute component={Fiche} fetchData={fetchFicheData} />
+              <Route path="login" component={LoginOrRegister} onEnter={redirectAuth} />
+              <Route path="dashboard" component={Dashboard} onEnter={requireAuth} />
+              <Route path="about" component={About} />
+              <Route path="fiches">
+                <IndexRoute component={Fiche} fetchData={fetchFicheData} />
+                <Route path="/fiches/fiche/:ficheId" component={DetailedFiche}/>
+              </Route>
+              <Route path="playlists" component={Playlist} />
+          </Route>
   );
 };

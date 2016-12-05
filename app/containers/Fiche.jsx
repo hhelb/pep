@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { ficheTyping, createFiche, destroyFiche, editFiche }from '../actions/fiches';
 
 import FicheSection from '../components/FicheSection.jsx';
-
 /*
  * Note: This is kept as a container-level component,
  *  i.e. We should keep this as the container that does the data-fetching
@@ -24,12 +23,14 @@ class Fiche extends Component{
                         onDestroy={destroyFiche}
                         onEdit={editFiche}
                     />
-                </div>
+                    </div>
             </div>
         );
     }
 }
 
+
+//Type checking
 Fiche.propTypes ={
     fiches: PropTypes.array.isRequired,
     ficheTyping: PropTypes.func.isRequired,

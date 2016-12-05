@@ -22,6 +22,15 @@ Object.defineProperty(exports, 'ficheService', {
   }
 });
 
+var _fiche = require('./fiche');
+
+Object.defineProperty(exports, 'OneFicheService', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_fiche).default;
+  }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //# sourceMappingURL=index-compiled.js.map

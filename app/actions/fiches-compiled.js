@@ -3,15 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-                                                                                                                                                                                                                                                                               * Created by hasj on 21/11/2016.
-                                                                                                                                                                                                                                                                               */
-/* eslint consistent-return: 0, no-else-return: 0*/
-
-
 exports.makeFicheRequest = makeFicheRequest;
 exports.fetchFiches = fetchFiches;
+exports.getOne = getOne;
 exports.ficheTyping = ficheTyping;
 exports.createFicheRequest = createFicheRequest;
 exports.editFicheRequest = editFicheRequest;
@@ -44,6 +38,10 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * Created by hasj on 21/11/2016.
+ */
+/* eslint consistent-return: 0, no-else-return: 0*/
 (0, _es6Promise.polyfill)();
 function makeFicheRequest(method, id, data) {
     var api = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '/fiches';
@@ -51,14 +49,19 @@ function makeFicheRequest(method, id, data) {
     return _axios2.default[method](api + (id ? '/' + id : ''), data);
 }
 
-// Fetch posts logic
+// Fetch fiche logic
 function fetchFiches() {
     return {
         type: types.GET_FICHES,
         promise: makeFicheRequest('get')
     };
 }
-
+function getOne(id) {
+    return {
+        type: types.GET_FICHE,
+        promise: makeFicheRequest('get', id)
+    };
+}
 function ficheTyping() {
     return {
         type: types.FICHE_TYPING
@@ -123,7 +126,6 @@ function editFicheFailure(data) {
     };
 }
 function createFiche(data) {
-    console.log("holaaaaaaaaaaaaaa  " + (typeof data === 'undefined' ? 'undefined' : _typeof(data)) + " " + data);
     return function (dispatch, getState) {
         var id = _sparkMd2.default.hash(data.name);
         // Redux thunk's middleware receives the store methods `dispatch`

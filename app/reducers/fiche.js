@@ -64,7 +64,7 @@ const newFiche = (
 
 const ficheReducer = combineReducers({
     fiches,
-    newFiche
+    newFiche,
 });
 
 export default ficheReducer;

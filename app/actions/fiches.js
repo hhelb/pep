@@ -12,14 +12,19 @@ export function makeFicheRequest(method, id, data, api = '/fiches') {
     return request[method](api + (id ? ('/' + id) : ''), data);
 }
 
-// Fetch posts logic
+// Fetch fiche logic
 export function fetchFiches() {
     return {
         type: types.GET_FICHES,
         promise: makeFicheRequest('get')
     };
 }
-
+export function getOne(id){
+    return {
+        type: types.GET_FICHE,
+        promise: makeFicheRequest('get',id)
+    }
+}
 export function ficheTyping() {
     return {
         type: types.FICHE_TYPING,
@@ -84,7 +89,6 @@ export function editFicheFailure(data) {
     }
 }
 export function createFiche(data) {
-    console.log("holaaaaaaaaaaaaaa  "+typeof data+ " "+ data);
     return (dispatch, getState) => {
         const id = md5.hash(data.name);
         // Redux thunk's middleware receives the store methods `dispatch`

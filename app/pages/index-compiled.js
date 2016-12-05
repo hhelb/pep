@@ -67,6 +67,15 @@ Object.defineProperty(exports, 'Playlist', {
   }
 });
 
+var _DetailedFiche = require('pages/DetailedFiche');
+
+Object.defineProperty(exports, 'DetailedFiche', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_DetailedFiche).default;
+  }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //# sourceMappingURL=index-compiled.js.map

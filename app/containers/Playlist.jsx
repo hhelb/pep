@@ -12,7 +12,7 @@ const cx = classNames.bind(styles);
 const Playlist = () => {
     return (
         <div className={cx('about')}>
-            <h1 className={cx('header')}>Liste des playlists</h1>
+            <h1 className={cx('header')}>Playlist</h1>
         </div>
     );
 };

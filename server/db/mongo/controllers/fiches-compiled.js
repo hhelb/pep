@@ -7,6 +7,7 @@ exports.all = all;
 exports.add = add;
 exports.remove = remove;
 exports.update = update;
+exports.one = one;
 
 var _fiches = require('../models/fiches');
 
@@ -64,8 +65,20 @@ function update(req, res) {
     });
 }
 
+function one(req, res) {
+    var query = { id: req.params.id };
+    _fiches2.default.findOne(query, function (err, fiche) {
+        if (err) {
+            console.log('Error in first query');
+            return res.status(500).send('Something went wrong getting the data');
+        }
+        return res.json(fiche);
+    });
+}
+
 exports.default = {
     all: all,
+    one: one,
     add: add,
     remove: remove,
     update: update

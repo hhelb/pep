@@ -53,8 +53,20 @@ export function update(req, res) {
     })
 }
 
+export function one(req, res){
+    const query = {id : req.params.id};
+    Fiche.findOne(query, (err, fiche)=> {
+        if(err) {
+            console.log('Error in first query');
+            return res.status(500).send('Something went wrong getting the data');
+        }
+        return res.json(fiche);
+    })
+}
+
 export default{
     all,
+    one,
     add,
     remove,
     update
