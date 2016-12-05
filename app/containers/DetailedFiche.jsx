@@ -2,6 +2,7 @@ import { render } from 'react-dom'
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import FicheItem from '../components/FicheItem.jsx';
+import {destroyFiche} from '../actions/fiches';
 
 class DetailedFiche extends Component {
     findOne(id){
@@ -32,7 +33,7 @@ DetailedFiche.PropTypes = {
     text : PropTypes.string.isRequired,
     id : PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    onDestroy :PropTypes.func.isRequired,
+    destroyFiche :PropTypes.func.isRequired,
     onEdit: PropTypes.func.isRequired,
     fiche: PropTypes.object
 };
@@ -42,4 +43,4 @@ function mapStateToProps(state){
      fiches : state.fiche.fiches,
     }
 }
-export default connect (mapStateToProps)(DetailedFiche);
+export default connect (mapStateToProps , {destroyFiche})(DetailedFiche);
