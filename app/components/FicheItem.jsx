@@ -5,6 +5,8 @@
 import React, { Component, PropTypes } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import EditFicheForm from './EditFicheForm.jsx';
+import { browserHistory ,Link } from 'react-router'
+
 
 export default class FicheItem extends Component {
     constructor(props) {
@@ -28,8 +30,10 @@ export default class FicheItem extends Component {
                     <p> Id : {id} </p>
                     <p> nom : {name} </p>
                     <p> Texte: {text}</p>
-                    <Button bsStyle="danger" className="glyphicon glyphicon-remove" onClick={this.onDestroy}/>
-                    <Button bsStyle="warning" className="glyphicon glyphicon-edit" onClick={() => this.setState({show:true})}/>
+                    <Link to="/fiches">
+                        <Button bsStyle="danger" className="glyphicon glyphicon-remove" onClick={this.onDestroy}/>
+                    </Link>
+                        <Button bsStyle="warning" className="glyphicon glyphicon-edit" onClick={() => this.setState({show:true})}/>
                     <ModalFiche
                         show={this.state.show}
                         onHide={close}
