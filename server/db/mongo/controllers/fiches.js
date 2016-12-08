@@ -19,16 +19,15 @@ export function all(req, res) {
 
 export function add (req, res){
     let fiche = new Fiche({
-        id : req.body.id,
         name: req.body.name,
         text: req.body.text
     });
     return fiche.save((err) =>{
         if(err){
             console.log(err);
-            return res.status(400).send("nope")
+            return res.status(400).send("Fiche not added")
         }
-        return res.status(200).send('fiche created');
+        return res.status(200).send('Fiche created');
     })
 }
 

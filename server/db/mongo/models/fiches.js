@@ -4,9 +4,7 @@
 import mongoose from 'mongoose';
 
 const FicheSchema = new mongoose.Schema({
-    id: String,
     text: String,
     name: String
 });
 export default mongoose.model('Fiche', FicheSchema);
-

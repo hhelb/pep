@@ -3,8 +3,9 @@
  */
 import axios from 'axios';
 
-const serviceFiche = {
+// ask the server the fiches list
+const serviceFiches = {
     getFiches: () => axios.get('/fiches')
 };
 
-export default serviceFiche;
+export default serviceFiches;

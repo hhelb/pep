@@ -22,6 +22,10 @@ var _fiche = require('reducers/fiche');
 
 var _fiche2 = _interopRequireDefault(_fiche);
 
+var _playlist = require('reducers/playlist');
+
+var _playlist2 = _interopRequireDefault(_playlist);
+
 var _reduxForm = require('redux-form');
 
 var _reactRouterRedux = require('react-router-redux');
@@ -54,6 +58,7 @@ var isFetching = function isFetching() {
 var rootReducer = (0, _redux.combineReducers)({
   isFetching: isFetching,
   fiche: _fiche2.default,
+  playlist: _playlist2.default,
   topic: _topic2.default,
   user: _user2.default,
   message: _message2.default,

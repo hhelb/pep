@@ -31,6 +31,15 @@ Object.defineProperty(exports, 'OneFicheService', {
   }
 });
 
+var _playlists = require('./playlists');
+
+Object.defineProperty(exports, 'playlistService', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_playlists).default;
+  }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //# sourceMappingURL=index-compiled.js.map

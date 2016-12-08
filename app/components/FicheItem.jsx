@@ -5,8 +5,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import EditFicheForm from './EditFicheForm.jsx';
-import { browserHistory ,Link } from 'react-router'
-
+import { browserHistory, Link } from 'react-router';
 
 export default class FicheItem extends Component {
     constructor(props) {
@@ -78,6 +77,7 @@ class ModalFiche extends Component {
         );
     }
 }
+
 ModalFiche.propTypes = {
     name: PropTypes.string,
     descr:PropTypes.string,

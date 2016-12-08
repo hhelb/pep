@@ -22,6 +22,15 @@ Object.defineProperty(exports, 'fetchFicheData', {
   }
 });
 
+var _fetchPlaylistData = require('./fetchPlaylistData');
+
+Object.defineProperty(exports, 'fetchPlaylistData', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_fetchPlaylistData).default;
+  }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //# sourceMappingURL=index-compiled.js.map

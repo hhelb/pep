@@ -34,7 +34,6 @@ export function ficheTyping() {
 export function createFicheRequest(data) {
     return {
         type: types.CREATE_FICHE_REQUEST,
-        id: data.id,
         text: data.text,
         name: data.name
     };
@@ -90,34 +89,34 @@ export function editFicheFailure(data) {
 }
 export function createFiche(data) {
     return (dispatch, getState) => {
-        const id = md5.hash(data.name);
+        //const id = md5.hash(data.name);
         // Redux thunk's middleware receives the store methods `dispatch`
         // and `getState` as parameters
         const { fiche } = getState();
         // First dispatch an optimistic update
         dispatch(createFicheRequest(data));
-        return makeFicheRequest('post', id, data)
+        return makeFicheRequest('post', data)
             .then(res => {
                 if (res.status === 200) {
                     return dispatch(createFicheSuccess());
                 }
             })
             .catch(() => {
-                return dispatch(createFicheFailure({ id, error: 'Oops! Something went wrong and we couldn\'t create your fiche'}));
+                return dispatch(createFicheFailure({ error: 'Oops! Something went wrong and we couldn\'t create your fiche'}));
             });
     };
 }
 export function submitForm({ name, text}){
     return (dispatch) => {
         let id = md5.hash(name);
-        dispatch(createFicheRequest({id, name, text}));
-        return makeFicheRequest('post', id, { id, name, text})
+        dispatch(createFicheRequest({name, text}));
+        return makeFicheRequest('post',{ name, text})
             .then(res => {
                 if(res.status ===200) {
                     return dispatch(submitFormSuccess(res.data));
                 }
             })
-            .catch(() => dispatch(createFicheFailure({id, error: 'Oops! Something went wrong and we couldn\'t create your fiche'})))
+            .catch(() => dispatch(createFicheFailure({error: 'Oops! Something went wrong and we couldn\'t create your fiche'})))
     }
 }
 

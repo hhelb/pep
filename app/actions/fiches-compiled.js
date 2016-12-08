@@ -71,7 +71,6 @@ function ficheTyping() {
 function createFicheRequest(data) {
     return {
         type: types.CREATE_FICHE_REQUEST,
-        id: data.id,
         text: data.text,
         name: data.name
     };
@@ -127,22 +126,21 @@ function editFicheFailure(data) {
 }
 function createFiche(data) {
     return function (dispatch, getState) {
-        var id = _sparkMd2.default.hash(data.name);
+        //const id = md5.hash(data.name);
         // Redux thunk's middleware receives the store methods `dispatch`
         // and `getState` as parameters
-
         var _getState = getState(),
             fiche = _getState.fiche;
         // First dispatch an optimistic update
 
 
         dispatch(createFicheRequest(data));
-        return makeFicheRequest('post', id, data).then(function (res) {
+        return makeFicheRequest('post', data).then(function (res) {
             if (res.status === 200) {
                 return dispatch(createFicheSuccess());
             }
         }).catch(function () {
-            return dispatch(createFicheFailure({ id: id, error: 'Oops! Something went wrong and we couldn\'t create your fiche' }));
+            return dispatch(createFicheFailure({ error: 'Oops! Something went wrong and we couldn\'t create your fiche' }));
         });
     };
 }
@@ -152,13 +150,13 @@ function submitForm(_ref) {
 
     return function (dispatch) {
         var id = _sparkMd2.default.hash(name);
-        dispatch(createFicheRequest({ id: id, name: name, text: text }));
-        return makeFicheRequest('post', id, { id: id, name: name, text: text }).then(function (res) {
+        dispatch(createFicheRequest({ name: name, text: text }));
+        return makeFicheRequest('post', { name: name, text: text }).then(function (res) {
             if (res.status === 200) {
                 return dispatch(submitFormSuccess(res.data));
             }
         }).catch(function () {
-            return dispatch(createFicheFailure({ id: id, error: 'Oops! Something went wrong and we couldn\'t create your fiche' }));
+            return dispatch(createFicheFailure({ error: 'Oops! Something went wrong and we couldn\'t create your fiche' }));
         });
     };
 }

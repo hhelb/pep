@@ -3,6 +3,8 @@ import user from 'reducers/user';
 import topic from 'reducers/topic';
 import message from 'reducers/message';
 import fiche  from 'reducers/fiche';
+import playlist from 'reducers/playlist';
+
 import {reducer as formReducer } from 'redux-form';
 import { routerReducer as routing } from 'react-router-redux';
 import * as types from 'types';
@@ -24,6 +26,7 @@ const isFetching = ( state = false, action ) => {
 const rootReducer = combineReducers({
   isFetching,
   fiche,
+  playlist,
   topic,
   user,
   message,
